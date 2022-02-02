@@ -1,17 +1,27 @@
 package com.Controller;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
+//@RestController
+@Controller
+//@ResponseBody
 public class HomeController {
+	 
+	  @RequestMapping("/")
+	    public String root(){
+	        return "home";
+	    }
 
-    @GetMapping("/home")
-    public String home(){
-        return "This is Home Page";
-    }
+	  @RequestMapping("/user")
+	    public String home(){
+	        return "user";
+	    }
 
-    @GetMapping("/admin")
-    public String admin(){
-        return "This is Admin Page";
-    }
+	  @RequestMapping("/admin")
+	    public String admin(){
+	        return "admin";
+	    }
+  
 }

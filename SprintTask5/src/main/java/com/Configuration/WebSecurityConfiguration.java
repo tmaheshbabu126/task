@@ -27,18 +27,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return  provider;
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/")
-                .permitAll()
-                .antMatchers("/home")
-                .hasAuthority("USER")
-                .antMatchers("/admin")
-                .hasAuthority("ADMIN")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic();
-    }
+	
+	  @Override protected void configure(HttpSecurity http) throws Exception {
+	  http.authorizeRequests()
+	  .antMatchers("/admin").hasAuthority("ADMIN")
+	  .antMatchers("/user").hasAuthority("USER")//.hasAnyRole("USER","ADMIN") 
+	  .antMatchers("/").permitAll().and().formLogin();
+	   }
+	 
 }
