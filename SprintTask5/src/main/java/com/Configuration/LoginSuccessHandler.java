@@ -5,10 +5,12 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 
 import com.Service.CustomUserDetails;
  
@@ -23,7 +25,10 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
          
         String redirectURL = request.getContextPath();
         String Role = userDetails.getRole();
+      
         
+       // Model model = null;
+     //   model.addAttribute("uName", userDetails.getUsername()); 
         System.out.println(Role);
          
         if (Role.equals("USER")) {
@@ -33,7 +38,13 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         } else {
             redirectURL = "/home";
         }
+        
+        
+        
+//       String uName;
+//        uName= userDetails.getUsername(); 
          
+       
         System.out.println(redirectURL);
         response.sendRedirect(redirectURL);
          

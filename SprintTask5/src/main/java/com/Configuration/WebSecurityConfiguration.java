@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -36,10 +37,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	  .antMatchers("/user").hasAuthority("USER")
 	  //.hasAnyRole("USER","ADMIN") 
 	  //.antMatchers("/").permitAll()
-	  .and().formLogin()
+	  .and().formLogin().successHandler(loginSuccessHandler);
+	 // .loginPage("/login").failureUrl("/login?error").permitAll()
+	 // .and()
+	 // .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
       //.loginPage("/user.html")
       //.loginProcessingUrl("/user")
-      .successHandler(loginSuccessHandler);
+      //.successHandler(loginSuccessHandler);
 	   }
 	 
 }
