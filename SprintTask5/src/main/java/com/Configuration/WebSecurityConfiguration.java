@@ -17,6 +17,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired 
+    private LoginSuccessHandler loginSuccessHandler;
 
     @Bean
     AuthenticationProvider authenticationProvider() {
@@ -31,8 +33,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	  @Override protected void configure(HttpSecurity http) throws Exception {
 	  http.authorizeRequests()
 	  .antMatchers("/admin").hasAuthority("ADMIN")
-	  .antMatchers("/user").hasAuthority("USER")//.hasAnyRole("USER","ADMIN") 
-	  .antMatchers("/").permitAll().and().formLogin();
+	  .antMatchers("/user").hasAuthority("USER")
+	  //.hasAnyRole("USER","ADMIN") 
+	  //.antMatchers("/").permitAll()
+	  .and().formLogin()
+      //.loginPage("/user.html")
+      //.loginProcessingUrl("/user")
+      .successHandler(loginSuccessHandler);
 	   }
 	 
 }
