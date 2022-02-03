@@ -64,20 +64,27 @@ body {
 #leftbox {
                 float:left; 
                
-                width:25%;
+                width:33%;
                 height:280px;
             }
             #middlebox{
                 float:left; 
                
-                width:50%;
+                width:33%;
                 height:280px;
             }
             #rightbox{
-            position:relative;
-                float:right;
-                left:150px;
-                down:150px;
-                width:25%;
-                height:280px;
+                position: relative;
+    float: right;
+    left: 150px;
+    bottom: 75px;
+   /*  width: 33%; */ 
+    height: 280px;
             }
+            
+            
+            .height {
+    height: 50vh!important;
+}
+
+

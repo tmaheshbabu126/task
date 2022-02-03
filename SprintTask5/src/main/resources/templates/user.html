@@ -72,20 +72,31 @@
 		</form>
 	</div> -->
 
-	<div id = "middlebox">
-		<button type="button" class="btn btn-info">Generate</button>
+	<div id = "middlebox" style="float:left; margin-left:25%">
+	<h4>Generate Output:</h4>
+	<!-- 	<button type="button" class="btn btn-info">Generate</button> -->
+	
+		<a href="/generate">
+   <input type="button" class="btn btn-info" value="Generate" />
+</a>
 
 	<div/>
 	
-	<div id = "rightbox">
-		<button type="button" class="btn btn-secondary">Export</button>
+	<div id = "rightbox" style="float:center; ">
+	<h4>Export Output:</h4>
+		<!-- <button type="button" class="btn btn-secondary" href="http://localhost:8080/download"><a>Export</a></button> -->
+		
+		<a href="/download">
+   <input type="button" class="btn btn-secondary" value="Export" />
+</a>
 
-	<div/>
+	</div>
 	
 	
 	</div>
+	<br>
 
-		<hr />
+		
 
 		<div th:if="${message}">
 			<h2 th:text="${message}" />
