@@ -104,11 +104,11 @@ public class FileController {
     
 	
     
-    @GetMapping("/download")
-    public ResponseEntity downloadFileFromLocal(@PathVariable("fileName")String file) {
-    	System.out.println(file);
+    @GetMapping("/downloadFiles")
+    public ResponseEntity downloadFileFromLocal(@RequestParam("files") String files, RedirectAttributes redirectAttributes) {
+    	System.out.println(files);
     	System.out.println("in file control");
-    	Path path = Paths.get("C:\\Users\\mahes\\Desktop\\Task-CG-Asha\\task notes files" + file);
+    	Path path = Paths.get("C:\\Users\\mahes\\Desktop\\Task-CG-Asha\\task notes files\\" + files);
     	Resource resource = null;
     	try {
     		resource = new UrlResource(path.toUri());
@@ -116,11 +116,28 @@ public class FileController {
     		e.printStackTrace();
     	}
     	return ResponseEntity.ok()
-    			.contentType(MediaType.parseMediaType("Content-Type: text/html"))
+    			.contentType(MediaType.parseMediaType("text/csv"))
     			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
     			.body(resource);
     }
+    
+    
+    
+    
+    
 	 
+	/*
+	 * @GetMapping("/download") public ResponseEntity
+	 * downloadFileFromLocal(@PathVariable("fileName")String file) {
+	 * System.out.println(file); System.out.println("in file control"); Path path =
+	 * Paths.get("C:\\Users\\mahes\\Desktop\\Task-CG-Asha\\task notes files" +
+	 * file); Resource resource = null; try { resource = new
+	 * UrlResource(path.toUri()); } catch (MalformedURLException e) {
+	 * e.printStackTrace(); } return ResponseEntity.ok()
+	 * .contentType(MediaType.parseMediaType("Content-Type: text/html"))
+	 * .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +
+	 * resource.getFilename() + "\"") .body(resource); }
+	 */
     
     
     

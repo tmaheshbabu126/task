@@ -63,12 +63,13 @@
 
 	</div> -->
 	
-		<!-- <form method="post" th:action="@{/download/}" th:object="${downloadFileName}"" 
-				enctype="multipart/form-data">
-				<input type="file" name="files" id="file" th:field="*{fileName}"
+	<form method="GET" th:action="@{/downloadFiles}"
+				
+				>
+				<input type="file" name="files" id="file"
 					onchange="javascript:updateList()" multiple /> <br /> <br />
 				<button type="submit" class="btn btn-primary">Download</button>
-				 <button type="submit">Submit</button>
-			</form> -->
+				
+			</form>
 	
 </div>
