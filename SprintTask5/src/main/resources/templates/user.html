@@ -32,5 +32,16 @@
 			<h2 th:text="${message}" />
 		</div>
 	</Div>
+	
+	<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+
+<script th:inline="javascript">
+    var number = [[${number}]];
+    var message = [[${message}]];
+
+</script>
+
+<script type="text/javascript" th:src="@{js/suggestions.js}"></script>
+<script type="text/javascript" th:src="@{js/script.js}"></script>
 </body>
 </html>
